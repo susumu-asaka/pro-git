@@ -1,0 +1,26 @@
+git init
+git clone <repository> [<directory>]
+git status [-s]
+git add <pathspec>...
+git diff [--cached]
+git commit [-a] [--amend] [-m <msg>]
+git rm [--cached] <pathspec>
+git mv <source> <destination>
+git log [-p] [-<number>] [--stat] [--pretty=<format>] [--graph]
+        [--since=<date>] [--before=<date>] [--author=<pattern>] [--no-merges]
+        [-- <path>]
+git reset <tree-ish> <pathspec>
+git checkout -- <pathspec>
+git checkout [-b <new_branch>] [<start_point>]
+git remote [-v]
+git remote add <name> <url>
+git remote show <name>
+git remote rename <old> <new>
+git remote remove <name>
+git fetch [<repository>]
+git push [--tags] [-d] <repository> [<refspec>]
+git tag [-l <pattern>]
+git tag [-a] [-m <msg>] <tagname> [<commit>]
+git tag -d <tagname>
+git show <object>
+git config [<file-option>] <name> <value>
