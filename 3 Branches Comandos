@@ -1,0 +1,4 @@
+git branch [-d] <branchname>
+git branch [-v] [--merged|--no-merged]
+git checkout <branch>
+git merge <commit>
