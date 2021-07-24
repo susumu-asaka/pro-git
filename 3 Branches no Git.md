@@ -25,12 +25,12 @@ $ git commit -m 'The initial commit of my project'
 $ git branch testing
 ```
 
-| ![](two-branches.png)                                        |
-| ------------------------------------------------------------ |
+|                    ![](two-branches.png)                     |
+| :----------------------------------------------------------: |
 | **Figura 12. Duas branches apontando para o mesmo histórico de commits** |
 
-| ![](head-to-master.png)                      |
-| -------------------------------------------- |
+|           ![](head-to-master.png)            |
+| :------------------------------------------: |
 | **Figure 13. HEAD apontando para um branch** |
 
 ```bash
@@ -182,8 +182,8 @@ index.html |    1 +
 1 file changed, 1 insertion(+)
 ```
 
-| ![](basic-merging-1.png)                                |
-| ------------------------------------------------------- |
+|                ![](basic-merging-1.png)                 |
+| :-----------------------------------------------------: |
 | **Figura 24. Três snapshots usados em um merge típico** |
 
 |     ![](basic-merging-2.png)      |
