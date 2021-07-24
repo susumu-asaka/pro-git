@@ -866,5 +866,5 @@ $ git config --global alias.visual '!gitk'
 
 ### 2.8 Resumo
 
-Nesse ponto, você já pode executar todas as operações locais básicas do Git - como criar ou clonar um repositório, fazer modificações, fazendo stage e commit dessas alterações e visualizando o histórico de todas as alterações pelas quais o repositório passou.
+Nesse ponto, você já pode executar todas as operações locais básicas do Git - como criar ou clonar um repositório; fazer modificações, fazendo stage e commit dessas alterações; visualizar o histórico de todas as alterações pelas quais o repositório passou.
 
