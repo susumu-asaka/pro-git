@@ -146,4 +146,5 @@ $ git help config
 
 Você deve ter um entendimento básico do que o Git é e como ele é diferente de sistemas de controle de versão centralizados que você talvez tenha usado anteriormente. 
 
-Você já deve ter também uma versão do Git funcionando na sua máquina que está configurada com o seu toque pessoal. 
+Você já deve ter também uma versão do Git funcionando na sua máquina, configurada com o seu toque pessoal. 
+
