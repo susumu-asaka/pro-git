@@ -98,21 +98,27 @@ $ git log --oneline --graph
 
 #### Branching Básico
 
-![Figura 18. Um histórico de commits simples](C:\Users\Semantix\Pro Git\basic-branching-1.png)
+|           ![](basic-branching-1.png)           |
+| :--------------------------------------------: |
+| **Figura 18. Um histórico de commits simples** |
 
 ```bash
 $ git checkout -b iss53
 Switched to a new branch "iss53"
 ```
 
-![Figura 19. Criando um novo branch](C:\Users\Semantix\Pro Git\basic-branching-2.png)
+|      ![](basic-branching-2.png)       |
+| :-----------------------------------: |
+| **Figura 19. Criando um novo branch** |
 
 ```bash
 $ code index.html
 $ git commit -a -m 'Create new footer [issue 53]'
 ```
 
-![Figura 20. O branch `iss53` moveu para frente com seu trabalho](C:\Users\Semantix\Pro Git\basic-branching-3.png)
+|                  ![](basic-branching-3.png)                  |
+| :----------------------------------------------------------: |
+| **Figura 20. O branch `iss53` moveu para frente com seu trabalho** |
 
 ```bash
 $ git checkout master
@@ -128,7 +134,9 @@ $ git commit -a -m 'Fix broken email address'
  1 file changed, 2 insertions(+)
 ```
 
-![Figura 21. Branch de hotfix baseado em `master`](C:\Users\Semantix\Pro Git\basic-branching-4.png)
+|             ![](basic-branching-4.png)              |
+| :-------------------------------------------------: |
+| **Figura 21. Branch de hotfix baseado em `master`** |
 
 ```bash
 $ git checkout master
@@ -139,7 +147,9 @@ Fast-forward
  1 file changed, 2 insertions(+)
 ```
 
-![Figura 22. O branch `master`  faz um fast-forward até `hotfix`](C:\Users\Semantix\Pro Git\basic-branching-5.png)
+|                  ![](basic-branching-5.png)                  |
+| :----------------------------------------------------------: |
+| **Figura 22. O branch `master`  faz um fast-forward até `hotfix`** |
 
 ```bash
 $ git branch -d hotfix
@@ -155,7 +165,11 @@ $ git commit -a -m 'Finish the new footer [issue 53]'
 1 file changed, 1 insertion(+)
 ```
 
-![Figura 23. Continuando o trabalho no branch `iss53`](C:\Users\Semantix\Pro Git\basic-branching-6.png)
+|               ![](basic-branching-6.png)                |
+| :-----------------------------------------------------: |
+| **Figura 23. Continuando o trabalho no branch `iss53`** |
+
+
 
 #### Merging Básico
 
@@ -168,9 +182,13 @@ index.html |    1 +
 1 file changed, 1 insertion(+)
 ```
 
-![Figura 24. Três snapshots usados em um merge típico](C:\Users\Semantix\Pro Git\basic-merging-1.png)
+| ![](basic-merging-1.png)                                |
+| ------------------------------------------------------- |
+| **Figura 24. Três snapshots usados em um merge típico** |
 
-![Figura 25. Um commit de merge](C:\Users\Semantix\Pro Git\basic-merging-2.png)
+|     ![](basic-merging-2.png)      |
+| :-------------------------------: |
+| **Figura 25. Um commit de merge** |
 
 ```bash
 $ git branch -d iss53
@@ -274,15 +292,25 @@ If you are sure you want to delete it, run 'git branch -D testing'.
 
 ### 3.5 Remote Branches
 
-![Figura 30. Repositório local e servidor após o clone](C:\Users\Semantix\Pro Git\remote-branches-1.png)
+|                ![](remote-branches-1.png)                |
+| :------------------------------------------------------: |
+| **Figura 30. Repositório local e servidor após o clone** |
 
-![Figura 31. Repositório local e remoto podem divergir](C:\Users\Semantix\Pro Git\remote-branches-2.png)
+|                ![](remote-branches-2.png)                |
+| :------------------------------------------------------: |
+| **Figura 31. Repositório local e remoto podem divergir** |
 
-![Figura 32. `git fetch` atualiza suas preferências remotas](C:\Users\Semantix\Pro Git\remote-branches-3.png)
+|                  ![](remote-branches-3.png)                  |
+| :----------------------------------------------------------: |
+| **Figura 32. `git fetch` atualiza suas preferências remotas** |
 
-![Figura 33. Adicionando outro servidor como remoto](C:\Users\Semantix\Pro Git\remote-branches-4.png)
+|              ![](remote-branches-4.png)               |
+| :---------------------------------------------------: |
+| **Figura 33. Adicionando outro servidor como remoto** |
 
-![Figura 34. Branch remoto de rastreamento para `teamone/master`](C:\Users\Semantix\Pro Git\remote-branches-5.png)
+|                  ![](remote-branches-5.png)                  |
+| :----------------------------------------------------------: |
+| **Figura 34. Branch remoto de rastreamento para `teamone/master`** |
 
 #### Fazendo o Push
 
@@ -355,9 +383,13 @@ To https://github.com/schacon/simplegit
 
 ### 3.6 Fazendo o Rebase
 
-![Figure 35. Um simples histórico de divergência](C:\Users\Semantix\Pro Git\basic-rebase-1.png)
+|              ![](basic-rebase-1.png)               |
+| :------------------------------------------------: |
+| **Figure 35. Um simples histórico de divergência** |
 
-![Figura 36. Fazendo um merge para integrar áreas de trabalho que divergiram](C:\Users\Semantix\Pro Git\basic-merging-2.png)
+|                   ![](basic-merging-2.png)                   |
+| :----------------------------------------------------------: |
+| **Figura 36. Fazendo um merge para integrar áreas de trabalho que divergiram** |
 
 ```bash
 $ git checkout experiment
@@ -366,7 +398,9 @@ First, rewinding head to replay your work on top of it...
 Applying: added staged command
 ```
 
-![Figura 37. Fazendo o rebase da mudança introduzida no `C4` em `C3`](C:\Users\Semantix\Pro Git\basic-rebase-3.png)
+|                   ![](basic-rebase-3.png)                    |
+| :----------------------------------------------------------: |
+| **Figura 37. Fazendo o rebase da mudança introduzida no `C4` em `C3`** |
 
 ```bash
 $ git checkout master
@@ -375,26 +409,34 @@ $ git merge experiment
 
 #### Rebases Mais Interessantes
 
-![Figure 39. Um histórico com um tópico de branch de outro branch](C:\Users\Semantix\Pro Git\interesting-rebase-1.png)
+|                ![](interesting-rebase-1.png)                 |
+| :----------------------------------------------------------: |
+| **Figure 39. Um histórico com um tópico de branch de outro branch** |
 
 ```bash
 $ git rebase --onto master server client
 ```
 
-![Figura 40. Fazendo rebase de um branch para outro branch](C:\Users\Semantix\Pro Git\interesting-rebase-2.png)
+|                ![](interesting-rebase-2.png)                 |
+| :----------------------------------------------------------: |
+| **Figura 40. Fazendo rebase de um branch para outro branch** |
 
 ```bash
 $ git checkout master
 $ git merge client
 ```
 
-![Figure 41. Fazendo fast-forward de seu branch `master` para incluir as mudanças da branch `client`](C:\Users\Semantix\Pro Git\interesting-rebase-3.png)
+|                ![](interesting-rebase-3.png)                 |
+| :----------------------------------------------------------: |
+| **Figure 41. Fast-forward de seu branch `master` para incluir as mudanças da branch `client`** |
 
 ```bash
 $ git rebase master server
 ```
 
-![Figure 42. Fazendo rebase do branch `server` para o branch `master`](C:\Users\Semantix\Pro Git\interesting-rebase-4.png)
+|                ![](interesting-rebase-4.png)                 |
+| :----------------------------------------------------------: |
+| **Figure 42. Fazendo rebase do branch `server` para o branch `master`** |
 
 ```bash
 $ git checkout master
@@ -406,23 +448,35 @@ $ git branch -d client
 $ git branch -d server
 ```
 
-![Figura 43. Histórico final de commits](C:\Users\Semantix\Pro Git\interesting-rebase-5.png)
+|       ![](interesting-rebase-5.png)       |
+| :---------------------------------------: |
+| **Figura 43. Histórico final de commits** |
 
 #### Os Perigos do Rebase
 
 **Não faça rebase de commits que existam fora de seu repositório e nos quais as pessoas possam ter trabalhado.**
 
-![Figura 44. Fazendo clone de um repositório e trabalhando com ele](C:\Users\Semantix\Pro Git\perils-of-rebasing-1.png)
+|                ![](perils-of-rebasing-1.png)                 |
+| :----------------------------------------------------------: |
+| **Figura 44. Fazendo clone de um repositório e trabalhando com ele** |
 
-![Figura 45. Fazer fetch de mais commits e merge em seu trabalho](C:\Users\Semantix\Pro Git\perils-of-rebasing-2.png)
+|                ![](perils-of-rebasing-2.png)                 |
+| :----------------------------------------------------------: |
+| **Figura 45. Fazer fetch de mais commits e merge em seu trabalho** |
 
-![Figura 46. Alguém faz um push de commits rebaseados abandonando commits nos quais você baseou seu trabalho](C:\Users\Semantix\Pro Git\perils-of-rebasing-3.png)
+|                ![](perils-of-rebasing-3.png)                 |
+| :----------------------------------------------------------: |
+| **Figura 46. Pusharam commits rebaseados, abandonando commits nos quais baseou seu trabalho** |
 
-![Figura 47. Você faz o merge do mesmo trabalho novamente num novo commit de merge](C:\Users\Semantix\Pro Git\perils-of-rebasing-4.png)
+|                ![](perils-of-rebasing-4.png)                 |
+| :----------------------------------------------------------: |
+| **Figura 47. Você faz o merge do mesmo trabalho novamente num novo commit de merge** |
 
 #### Rebase sobre Rebase
 
-![Figure 48. Rebase sobre trabalho de rebase forçado](C:\Users\Semantix\Pro Git\perils-of-rebasing-5.png)
+|             ![](perils-of-rebasing-5.png)              |
+| :----------------------------------------------------: |
+| **Figure 48. Rebase sobre trabalho de rebase forçado** |
 
 #### Rebase vs. Merge
 
@@ -433,5 +487,9 @@ Dois pontos de vista sobre histórico:
 
 ### 3.7 Resumo
 
-Cobrimos as funções de branching e merging básicas no Git. Você deve se sentir confortável para criar e alternar para novos branches, alternar entre branches e fazer merge de branches locais. Você também deve ser capaz de compartilhar seus branches fazendo push para um servidor compartilhado, trabalhando com outras pessoas em branches compartilhados e fazendo rebase de seus branches antes de serem compartilhados.
+Cobrimos as funções de branching e merging básicas no Git. 
+
+Você deve se sentir confortável para criar e alternar para novos branches, alternar entre branches e fazer merge de branches locais. 
+
+Você também deve ser capaz de compartilhar seus branches fazendo push para um servidor compartilhado, trabalhando com outras pessoas em branches compartilhados e fazendo rebase de seus branches antes de serem compartilhados.
 
