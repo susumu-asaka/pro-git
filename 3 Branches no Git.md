@@ -257,6 +257,171 @@ $ git log --oneline --graph
 * 7b1cdb8 initial commit
 ```
 
+### 3.6 Fazendo o Rebase
+
+|              ![](basic-rebase-1.png)               |
+| :------------------------------------------------: |
+| **Figure 35. Um simples histórico de divergência** |
+
+|                   ![](basic-rebase-2.png)                   |
+| :----------------------------------------------------------: |
+| **Figura 36. Fazendo um merge para integrar áreas de trabalho que divergiram** |
+
+```bash
+$ git checkout experiment
+$ git rebase master
+First, rewinding head to replay your work on top of it...
+Applying: added staged command
+```
+
+|                   ![](basic-rebase-3.png)                    |
+| :----------------------------------------------------------: |
+| **Figura 37. Fazendo o rebase da mudança introduzida no `C4` em `C3`** |
+
+```bash
+$ git checkout master
+$ git merge experiment
+```
+
+#### Rebases Mais Interessantes
+
+|                ![](interesting-rebase-1.png)                 |
+| :----------------------------------------------------------: |
+| **Figure 39. Um histórico com um tópico de branch de outro branch** |
+
+```bash
+$ git rebase --onto master server client
+```
+
+|                ![](interesting-rebase-2.png)                 |
+| :----------------------------------------------------------: |
+| **Figura 40. Fazendo rebase de um branch para outro branch** |
+
+```bash
+$ git checkout master
+$ git merge client
+```
+
+|                ![](interesting-rebase-3.png)                 |
+| :----------------------------------------------------------: |
+| **Figure 41. Fast-forward de seu branch `master` para incluir as mudanças da branch `client`** |
+
+```bash
+$ git rebase master server
+```
+
+|                ![](interesting-rebase-4.png)                 |
+| :----------------------------------------------------------: |
+| **Figure 42. Fazendo rebase do branch `server` para o branch `master`** |
+
+```bash
+$ git checkout master
+$ git merge server
+```
+
+```bash
+$ git branch -d client
+$ git branch -d server
+```
+
+|       ![](interesting-rebase-5.png)       |
+| :---------------------------------------: |
+| **Figura 43. Histórico final de commits** |
+
+#### Conflitos de Rebase
+
+Depois de resolver o conflito manualmente e atualizar o index com a resolução desejada, pode continuar o processo de rebase com
+
+```bash
+$ git rebase --continue
+```
+Pode desfazer o `git rebase` com
+```bash
+$ git rebase --abort
+```
+
+####  Rebase Interativo
+
+```bash
+$ git rebase -i master iss53
+```
+
+```bash
+pick f7f3f6d changed my name a bit
+pick 310154e updated README formatting and added blame
+pick a5f4a0d added cat-file
+
+# Rebase 710f0f8..a5f4a0d onto 710f0f8
+#
+# Commands:
+#  p, pick = use commit
+#  r, reword = use commit, but edit the commit message
+#  e, edit = use commit, but stop for amending
+#  s, squash = use commit, but meld into previous commit
+#  f, fixup = like "squash", but discard this commit's log message
+#  x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+```
+
+```bash
+$ git log --pretty=format:"%h %s" master..iss53
+a5f4a0d added cat-file
+310154e updated README formatting and added blame
+f7f3f6d changed my name a bit
+```
+
+
+
+#### Os Perigos do Rebase
+
+**Não faça rebase de commits que existam fora de seu repositório e nos quais as pessoas possam ter trabalhado.**
+
+|                ![](perils-of-rebasing-1.png)                 |
+| :----------------------------------------------------------: |
+| **Figura 44. Fazendo clone de um repositório e trabalhando com ele** |
+
+|                ![](perils-of-rebasing-2.png)                 |
+| :----------------------------------------------------------: |
+| **Figura 45. Fazer fetch de mais commits e merge em seu trabalho** |
+
+|                ![](perils-of-rebasing-3.png)                 |
+| :----------------------------------------------------------: |
+| **Figura 46. Pusharam commits rebaseados, abandonando commits nos quais baseou seu trabalho** |
+
+|                ![](perils-of-rebasing-4.png)                 |
+| :----------------------------------------------------------: |
+| **Figura 47. Você faz o merge do mesmo trabalho novamente num novo commit de merge** |
+
+#### Rebase sobre Rebase
+
+Se em vez de fazer um merge executarmos `git rebase teamone/master`, Git irá:
+
+* Determinar qual trabalho é exclusivo para nosso branch (C2, C3, C4, C6, C7)
+
+* Determinar quais não são commits de merge (C2, C3, C4)
+
+* Determinar quais não foram reescritos no branch de destino (apenas C2 e C3, uma vez que C4 é o mesmo patch que C4')
+
+* Aplicar esses commits no topo de `teamone/master`
+
+|             ![](perils-of-rebasing-5.png)              |
+| :----------------------------------------------------: |
+| **Figure 48. Rebase sobre trabalho de rebase forçado** |
+
+#### Rebase vs. Merge
+
+Dois pontos de vista sobre histórico:
+
+* **Registro do que realmente aconteceu**
+* **História de como o projeto foi feito**
+
 ### 3.3 Gerenciamento de Branches
 
 ```bash
@@ -376,114 +541,10 @@ Geralmente é melhor usar os comandos `fetch` e `merge` explicitamente, já que 
 #### Removendo Branches Remotos
 
 ```bash
-$ git push origin --delete serverfix
+$ git push -d origin serverfix
 To https://github.com/schacon/simplegit
  - [deleted]         serverfix
 ```
-
-### 3.6 Fazendo o Rebase
-
-|              ![](basic-rebase-1.png)               |
-| :------------------------------------------------: |
-| **Figure 35. Um simples histórico de divergência** |
-
-|                   ![](basic-merging-2.png)                   |
-| :----------------------------------------------------------: |
-| **Figura 36. Fazendo um merge para integrar áreas de trabalho que divergiram** |
-
-```bash
-$ git checkout experiment
-$ git rebase master
-First, rewinding head to replay your work on top of it...
-Applying: added staged command
-```
-
-|                   ![](basic-rebase-3.png)                    |
-| :----------------------------------------------------------: |
-| **Figura 37. Fazendo o rebase da mudança introduzida no `C4` em `C3`** |
-
-```bash
-$ git checkout master
-$ git merge experiment
-```
-
-#### Rebases Mais Interessantes
-
-|                ![](interesting-rebase-1.png)                 |
-| :----------------------------------------------------------: |
-| **Figure 39. Um histórico com um tópico de branch de outro branch** |
-
-```bash
-$ git rebase --onto master server client
-```
-
-|                ![](interesting-rebase-2.png)                 |
-| :----------------------------------------------------------: |
-| **Figura 40. Fazendo rebase de um branch para outro branch** |
-
-```bash
-$ git checkout master
-$ git merge client
-```
-
-|                ![](interesting-rebase-3.png)                 |
-| :----------------------------------------------------------: |
-| **Figure 41. Fast-forward de seu branch `master` para incluir as mudanças da branch `client`** |
-
-```bash
-$ git rebase master server
-```
-
-|                ![](interesting-rebase-4.png)                 |
-| :----------------------------------------------------------: |
-| **Figure 42. Fazendo rebase do branch `server` para o branch `master`** |
-
-```bash
-$ git checkout master
-$ git merge server
-```
-
-```bash
-$ git branch -d client
-$ git branch -d server
-```
-
-|       ![](interesting-rebase-5.png)       |
-| :---------------------------------------: |
-| **Figura 43. Histórico final de commits** |
-
-#### Os Perigos do Rebase
-
-**Não faça rebase de commits que existam fora de seu repositório e nos quais as pessoas possam ter trabalhado.**
-
-|                ![](perils-of-rebasing-1.png)                 |
-| :----------------------------------------------------------: |
-| **Figura 44. Fazendo clone de um repositório e trabalhando com ele** |
-
-|                ![](perils-of-rebasing-2.png)                 |
-| :----------------------------------------------------------: |
-| **Figura 45. Fazer fetch de mais commits e merge em seu trabalho** |
-
-|                ![](perils-of-rebasing-3.png)                 |
-| :----------------------------------------------------------: |
-| **Figura 46. Pusharam commits rebaseados, abandonando commits nos quais baseou seu trabalho** |
-
-|                ![](perils-of-rebasing-4.png)                 |
-| :----------------------------------------------------------: |
-| **Figura 47. Você faz o merge do mesmo trabalho novamente num novo commit de merge** |
-
-#### Rebase sobre Rebase
-
-|             ![](perils-of-rebasing-5.png)              |
-| :----------------------------------------------------: |
-| **Figure 48. Rebase sobre trabalho de rebase forçado** |
-
-#### Rebase vs. Merge
-
-Dois pontos de vista sobre histórico:
-
-* **Registro do que realmente aconteceu**
-* **História de como o projeto foi feito**
 
 ### 3.7 Resumo
 
