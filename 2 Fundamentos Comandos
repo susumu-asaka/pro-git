@@ -8,10 +8,11 @@ git rm [--cached] <pathspec>
 git mv <source> <destination>
 git log [-p] [-<number>] [--stat] [--pretty=<format>] [--graph]
         [--since=<date>] [--before=<date>] [--author=<pattern>] [--no-merges]
-        [-- <path>]
+        [[--] <path>]
 git reset <tree-ish> <pathspec>
 git checkout -- <pathspec>
-git checkout [-b <new_branch>] [<start_point>]
+git checkout <commit>
+git checkout -b <new_branch> [<start_point>]
 git remote [-v]
 git remote add <name> <url>
 git remote show <name>
