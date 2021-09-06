@@ -113,6 +113,12 @@ $ git config --global user.email fulanodetal@exemplo.com
 $ git config --global core.editor code
 ```
 
+#### Auto CRLF
+
+```bash
+$ git config --global core.autocrlf false
+```
+
 #### Verificando Suas Configurações
 
 ```bash

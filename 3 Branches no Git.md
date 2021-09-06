@@ -369,15 +369,45 @@ pick a5f4a0d added cat-file
 #
 # Note that empty commits are commented out
 ```
-
 ```bash
 $ git log --pretty=format:"%h %s" master..iss53
 a5f4a0d added cat-file
 310154e updated README formatting and added blame
 f7f3f6d changed my name a bit
 ```
+##### Editar Commit
+```bash
+edit f7f3f6d changed my name a bit
+pick 310154e updated README formatting and added blame
+pick a5f4a0d added cat-file
+```
 
+```bash
+$ git rebase -i master iss53
+Stopped at f7f3f6d... changed my name a bit
+You can amend the commit now, with
 
+       git commit --amend
+
+Once you’re satisfied with your changes, run
+
+       git rebase --continue
+```
+
+##### Reordenar Commits
+
+```bash
+pick 310154e updated README formatting and added blame
+pick f7f3f6d changed my name a bit
+```
+
+##### Fazer Squash de Commits
+
+```bash
+pick f7f3f6d changed my name a bit
+squash 310154e updated README formatting and added blame
+squash a5f4a0d added cat-file
+```
 
 #### Os Perigos do Rebase
 
@@ -455,7 +485,7 @@ error: The branch 'testing' is not fully merged.
 If you are sure you want to delete it, run 'git branch -D testing'.
 ```
 
-### 3.5 Remote Branches
+### 3.5 Branches Remotos
 
 |                ![](remote-branches-1.png)                |
 | :------------------------------------------------------: |
@@ -467,7 +497,7 @@ If you are sure you want to delete it, run 'git branch -D testing'.
 
 |                  ![](remote-branches-3.png)                  |
 | :----------------------------------------------------------: |
-| **Figura 32. `git fetch` atualiza suas preferências remotas** |
+| **Figura 32. `git fetch` atualiza seus branches rastreados remotos** |
 
 |              ![](remote-branches-4.png)               |
 | :---------------------------------------------------: |
